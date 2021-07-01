@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        appDataBase = Room.databaseBuilder(applicationContext, AppDataBase::class.java, "characters-database").allowMainThreadQueries().build()
+        appDataBase = Room.databaseBuilder(applicationContext, AppDataBase::class.java, CHARACTER_DATABASE).allowMainThreadQueries().build()
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -70,7 +70,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onResume() {
-        Log.d("BBC", "onResume")
         super.onResume()
         checkLocalDataBase()
         characterListAdapter.notifyDataSetChanged()
@@ -79,7 +78,6 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun checkLocalDataBase() {
-        Log.d("BBC", "Checking Local Database")
         characterList = dataRepo.queryFavorites() as MutableList<BreakingBadCharacter>
     }
 
@@ -100,9 +98,9 @@ class MainActivity : AppCompatActivity() {
                         characterResponseList.addAll(charactersInfo)
 
                         charactersInfo.forEach {
-                            val characterOccupations = it.occupation.joinToString(separator = "|")
-                            val characterAppearances = it.appearance.joinToString(separator = "|")
-                            val characterBCSAppearances = it.better_call_saul_appearance.joinToString(separator = "|")
+                            val characterOccupations = it.occupation.joinToString(separator = JOIN_TO_STRING_SEPARATOR)
+                            val characterAppearances = it.appearance.joinToString(separator = JOIN_TO_STRING_SEPARATOR)
+                            val characterBCSAppearances = it.better_call_saul_appearance.joinToString(separator = JOIN_TO_STRING_SEPARATOR)
 
                             val character = BreakingBadCharacter(it.char_id, it.name, it.birthday, characterOccupations, it.img, it.status, it.nickname, characterAppearances, it.portrayed, it.category, characterBCSAppearances)
 

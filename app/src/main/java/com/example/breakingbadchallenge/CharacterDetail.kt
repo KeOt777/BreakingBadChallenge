@@ -46,7 +46,7 @@ class CharacterDetail : AppCompatActivity() {
         portrayed = savedInstanceState?.getString(CHARACTER_PORTRAYED) ?: intent.getStringExtra(CHARACTER_PORTRAYED).toString()
         status = savedInstanceState?.getString(CHARACTER_STATUS) ?: intent.getStringExtra(CHARACTER_STATUS).toString()
         img = savedInstanceState?.getString(CHARACTER_IMAGE) ?: intent.getStringExtra(CHARACTER_IMAGE).toString()
-        occupation = savedInstanceState?.getString(CHARACTER_OCCUPATION) ?: intent.getStringExtra(CHARACTER_OCCUPATION).toString().replace("|",", ")
+        occupation = savedInstanceState?.getString(CHARACTER_OCCUPATION) ?: intent.getStringExtra(CHARACTER_OCCUPATION).toString().replace(JOIN_TO_STRING_SEPARATOR,SEPARATOR_REPLACEMENT)
         isFavorite = savedInstanceState?.getBoolean(CHARACTER_FAVORITE) ?: intent.getBooleanExtra(CHARACTER_FAVORITE, false)
 
         if(char_id > DEFAULT_CHARACTER_ID){
@@ -60,7 +60,6 @@ class CharacterDetail : AppCompatActivity() {
             }
 
             override fun onClick(v: View?) {
-                Log.d("BBC","Click")
                 val character = dataRepo.getCharacter(char_id)
                 character.isFavorite = !character.isFavorite
                 isFavorite = !isFavorite
