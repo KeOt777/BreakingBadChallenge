@@ -19,8 +19,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
-import com.example.breakingbadchallenge.apihandler.APIService
-import com.example.breakingbadchallenge.apihandler.CharacterResponse
+
+//import com.example.breakingbadchallenge.apihandler.APIService
+//import com.example.breakingbadchallenge.apihandler.CharacterResponse
+
+import com.example.breakingbadchallenge.apihandler.*
+
 import com.example.breakingbadchallenge.database.AppDataBase
 import com.example.breakingbadchallenge.database.BreakingBadCharacter
 import com.example.breakingbadchallenge.database.CharacterRepository
@@ -50,7 +54,7 @@ class MainActivity : AppCompatActivity() {
     private val characterResponseList = mutableListOf<CharacterResponse>()
     private var characterList = mutableListOf<BreakingBadCharacter>()
 
-    var apiResult: String = API_OK
+    private var apiResult: String = API_OK
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -167,7 +171,7 @@ class MainActivity : AppCompatActivity() {
         binding.rvCharacters.layoutManager = LinearLayoutManager(this)
         binding.rvCharacters.adapter = characterListAdapter
 
-        characterListAdapter.setOnItemClickListener(object: CharacterAdapter.onItemClickListener{
+        characterListAdapter.setOnItemClickListener(object: CharacterAdapter.OnItemClickListener{
             override fun onItemClick(position: Int) {
                 val activityIntent = Intent(this@MainActivity, CharacterDetail::class.java)
                 activityIntent.putExtra(CHARACTER_ID, characterList[position].char_id)

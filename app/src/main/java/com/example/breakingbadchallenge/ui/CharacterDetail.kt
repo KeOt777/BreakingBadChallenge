@@ -83,14 +83,14 @@ class CharacterDetail : AppCompatActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState?.putInt(CHARACTER_ID, char_id)
-        outState?.putString(CHARACTER_NAME, name)
-        outState?.putString(CHARACTER_NICKNAME, nickname)
-        outState?.putString(CHARACTER_OCCUPATION, occupation)
-        outState?.putString(CHARACTER_STATUS, status)
-        outState?.putString(CHARACTER_PORTRAYED, portrayed)
-        outState?.putString(CHARACTER_IMAGE, img)
-        outState?.putBoolean(CHARACTER_FAVORITE, isFavorite)
+        outState.putInt(CHARACTER_ID, char_id)
+        outState.putString(CHARACTER_NAME, name)
+        outState.putString(CHARACTER_NICKNAME, nickname)
+        outState.putString(CHARACTER_OCCUPATION, occupation)
+        outState.putString(CHARACTER_STATUS, status)
+        outState.putString(CHARACTER_PORTRAYED, portrayed)
+        outState.putString(CHARACTER_IMAGE, img)
+        outState.putBoolean(CHARACTER_FAVORITE, isFavorite)
     }
 
     private fun displayCharacter() {

@@ -10,4 +10,8 @@ interface IRepository<T> {
     fun insertAll(character: BreakingBadCharacter)
     fun updateFavorite(character: BreakingBadCharacter)
     fun queryFavorites(): List<T>
+    /**
+     * To be used only for cleaning the DB for Unit Testing
+     * */
+    fun deleteAll()
 }

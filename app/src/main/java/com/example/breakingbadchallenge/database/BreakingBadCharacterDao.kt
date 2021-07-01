@@ -23,4 +23,10 @@ interface BreakingBadCharacterDao {
 
     @Query("SELECT * FROM breakingbadcharacter ORDER BY isFavorite DESC")
     fun queryFavorites(): List<BreakingBadCharacter>
+
+    /**
+     * To be used only for cleaning the DB for Unit Testing
+     * */
+    @Query("DELETE FROM breakingbadcharacter")
+    fun deleteAll()
 }

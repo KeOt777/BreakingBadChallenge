@@ -13,7 +13,7 @@ import com.squareup.picasso.Picasso
  * CharacterViewHolder for the Character Card displayed on the RecyclerView
  * */
 
-class CharacterViewHolder(view: View, listener: CharacterAdapter.onItemClickListener) : RecyclerView.ViewHolder(view){
+class CharacterViewHolder(view: View, listener: CharacterAdapter.OnItemClickListener) : RecyclerView.ViewHolder(view){
 
     private val cardBinding = CharacterCardBinding.bind(view)
     private val characterNameText: TextView = cardBinding.textCharacterName

@@ -10,15 +10,15 @@ import com.example.breakingbadchallenge.database.BreakingBadCharacter
  * Character Adapter for the Character Card displayed on the RecyclerView
  * */
 
-class CharacterAdapter (val characterList:List<BreakingBadCharacter>):RecyclerView.Adapter<CharacterViewHolder>() {
+class CharacterAdapter (private val characterList:List<BreakingBadCharacter>):RecyclerView.Adapter<CharacterViewHolder>() {
 
-    private lateinit var cListener : onItemClickListener
+    private lateinit var cListener : OnItemClickListener
 
-    interface onItemClickListener{
+    interface OnItemClickListener{
         fun onItemClick(position : Int)
     }
 
-    fun setOnItemClickListener(listener: onItemClickListener){
+    fun setOnItemClickListener(listener: OnItemClickListener){
         cListener = listener
     }
 

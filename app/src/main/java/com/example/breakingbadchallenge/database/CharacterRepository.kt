@@ -30,4 +30,11 @@ class CharacterRepository : IRepository<BreakingBadCharacter>{
         return appDataBase.charactersDao().queryFavorites()
     }
 
+    /**
+     * To be used only for cleaning the DB for Unit Testing
+     * */
+    override fun deleteAll() {
+        appDataBase.charactersDao().deleteAll()
+    }
+
 }
