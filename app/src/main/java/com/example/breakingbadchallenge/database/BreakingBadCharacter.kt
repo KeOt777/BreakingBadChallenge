@@ -3,6 +3,10 @@ package com.example.breakingbadchallenge.database
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+/**
+ * Breaking Bad Character Entity for Database interaction
+ * */
+
 @Entity
 data class BreakingBadCharacter (
     @PrimaryKey val char_id: Int,

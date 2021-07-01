@@ -14,7 +14,7 @@
         android:theme="@style/Theme.BreakingBadChallenge"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".CharacterDetail"
+            android:name=".ui.CharacterDetail"
             android:label="@string/title_activity_character_detail"
             android:theme="@style/Theme.BreakingBadChallenge.NoActionBar" >
         </activity>

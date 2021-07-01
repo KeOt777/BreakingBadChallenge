@@ -1,8 +1,18 @@
+/**
+ * Auxiliary File used to keep track and control of String Constants. This ensures little to no Hard-coded Strings
+ * in the code itself.
+ *
+ * In case new String Constants are needed they should be added here
+ *
+ * String Constants are also useful in case they're needed to be reusable
+ * */
+
+
 package com.example.breakingbadchallenge
 
 const val NO_NETWORK = "Network Not Available"
 
-const val API_ERROR = "There was an error with retreiving information from the API"
+const val API_ERROR = "There was an error with retrieving information from the API"
 
 const val API_OK = "OK"
 

@@ -2,6 +2,10 @@ package com.example.breakingbadchallenge.database
 
 import com.example.breakingbadchallenge.appDataBase
 
+/**
+ * Character Repository
+ * */
+
 class CharacterRepository : IRepository<BreakingBadCharacter>{
     override fun getAll(): List<BreakingBadCharacter> {
         return appDataBase.charactersDao().getAll()

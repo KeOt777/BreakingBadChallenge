@@ -1,9 +1,14 @@
-package com.example.breakingbadchallenge
+package com.example.breakingbadchallenge.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.breakingbadchallenge.R
 import com.example.breakingbadchallenge.database.BreakingBadCharacter
+
+/**
+ * Character Adapter for the Character Card displayed on the RecyclerView
+ * */
 
 class CharacterAdapter (val characterList:List<BreakingBadCharacter>):RecyclerView.Adapter<CharacterViewHolder>() {
 

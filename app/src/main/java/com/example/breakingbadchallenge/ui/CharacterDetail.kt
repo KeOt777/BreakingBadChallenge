@@ -1,14 +1,15 @@
-package com.example.breakingbadchallenge
+package com.example.breakingbadchallenge.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.util.Log
 import android.view.View
-import android.widget.ImageView
-import com.example.breakingbadchallenge.database.BreakingBadCharacter
+import com.example.breakingbadchallenge.*
 import com.example.breakingbadchallenge.databinding.ActivityCharacterDetailBinding
 import com.squareup.picasso.Picasso
+
+/**
+ * Character Detail Activity
+ * */
 
 class CharacterDetail : AppCompatActivity() {
 
@@ -42,18 +43,29 @@ class CharacterDetail : AppCompatActivity() {
 
         char_id = savedInstanceState?.getInt(CHARACTER_ID) ?: intent.getIntExtra(CHARACTER_ID, DEFAULT_CHARACTER_ID)
         name = savedInstanceState?.getString(CHARACTER_NAME) ?: intent.getStringExtra(CHARACTER_NAME).toString()
-        nickname = savedInstanceState?.getString(CHARACTER_NICKNAME) ?: intent.getStringExtra(CHARACTER_NICKNAME).toString()
-        portrayed = savedInstanceState?.getString(CHARACTER_PORTRAYED) ?: intent.getStringExtra(CHARACTER_PORTRAYED).toString()
-        status = savedInstanceState?.getString(CHARACTER_STATUS) ?: intent.getStringExtra(CHARACTER_STATUS).toString()
-        img = savedInstanceState?.getString(CHARACTER_IMAGE) ?: intent.getStringExtra(CHARACTER_IMAGE).toString()
-        occupation = savedInstanceState?.getString(CHARACTER_OCCUPATION) ?: intent.getStringExtra(CHARACTER_OCCUPATION).toString().replace(JOIN_TO_STRING_SEPARATOR,SEPARATOR_REPLACEMENT)
-        isFavorite = savedInstanceState?.getBoolean(CHARACTER_FAVORITE) ?: intent.getBooleanExtra(CHARACTER_FAVORITE, false)
+        nickname = savedInstanceState?.getString(CHARACTER_NICKNAME) ?: intent.getStringExtra(
+            CHARACTER_NICKNAME
+        ).toString()
+        portrayed = savedInstanceState?.getString(CHARACTER_PORTRAYED) ?: intent.getStringExtra(
+            CHARACTER_PORTRAYED
+        ).toString()
+        status = savedInstanceState?.getString(CHARACTER_STATUS) ?: intent.getStringExtra(
+            CHARACTER_STATUS
+        ).toString()
+        img = savedInstanceState?.getString(CHARACTER_IMAGE) ?: intent.getStringExtra(
+            CHARACTER_IMAGE
+        ).toString()
+        occupation = savedInstanceState?.getString(CHARACTER_OCCUPATION) ?: intent.getStringExtra(
+            CHARACTER_OCCUPATION
+        ).toString().replace(JOIN_TO_STRING_SEPARATOR, SEPARATOR_REPLACEMENT)
+        isFavorite = savedInstanceState?.getBoolean(CHARACTER_FAVORITE) ?: intent.getBooleanExtra(
+            CHARACTER_FAVORITE, false)
 
         if(char_id > DEFAULT_CHARACTER_ID){
             displayCharacter()
         }
 
-        binding.imgFavoriteDetail.setOnClickListener(object: CharacterDetail.OnImageClickListener,
+        binding.imgFavoriteDetail.setOnClickListener(object: OnImageClickListener,
             View.OnClickListener {
             override fun onItemClick() {
                 //dataRepo.updateFavorite(char_id)

@@ -1,20 +1,32 @@
+/**
+ *      Project: Breaking Bad Challenge
+ *      Developer: Kevin Ruiz
+ *      Email: kevin.ruiz.gt@gmail.com
+ *      Linkedin: https://www.linkedin.com/in/kevin-ruiz-ramos/
+ *      Github: https://github.com/KeOt777/BreakingBadChallenge
+ *      Created: June-29-2021
+ *      Last Modified: July-01-2021
+ * */
+
 package com.example.breakingbadchallenge
 
 import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
+import com.example.breakingbadchallenge.apihandler.APIService
+import com.example.breakingbadchallenge.apihandler.CharacterResponse
 import com.example.breakingbadchallenge.database.AppDataBase
 import com.example.breakingbadchallenge.database.BreakingBadCharacter
 import com.example.breakingbadchallenge.database.CharacterRepository
 import com.example.breakingbadchallenge.databinding.ActivityMainBinding
+import com.example.breakingbadchallenge.ui.CharacterAdapter
+import com.example.breakingbadchallenge.ui.CharacterDetail
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -25,17 +37,20 @@ import retrofit2.converter.gson.GsonConverterFactory
 lateinit var appDataBase: AppDataBase
 val dataRepo = CharacterRepository()
 
+/**
+ * Main Activity
+ * */
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+    private lateinit var characterListAdapter: CharacterAdapter
+
+    private val characterResponseList = mutableListOf<CharacterResponse>()
+    private var characterList = mutableListOf<BreakingBadCharacter>()
 
     var apiResult: String = API_OK
-
-    private lateinit var characterListAdapter:CharacterAdapter
-    private val characterResponseList = mutableListOf<CharacterResponse>()
-
-    private var characterList = mutableListOf<BreakingBadCharacter>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,12 +67,18 @@ class MainActivity : AppCompatActivity() {
 
         initRecycleView()
 
+        /**
+         * In case of any error on the API consumption, show a Snackbar with the corresponding error message
+         * */
         if(apiResult != API_OK) {
             showError(apiResult)
         }
 
     }
 
+    /**
+     * Ensure that application always checks local Database before fetching data from the API
+     * */
     private fun initData() {
 
         checkLocalDataBase()
@@ -69,6 +90,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Ensure all data and RecycleView are properly reloaded when Activity is resumed
+     * */
     override fun onResume() {
         super.onResume()
         checkLocalDataBase()
@@ -76,11 +100,16 @@ class MainActivity : AppCompatActivity() {
         initRecycleView()
     }
 
-
+    /**
+     * Check Local Database for information
+     * */
     private fun checkLocalDataBase() {
         characterList = dataRepo.queryFavorites() as MutableList<BreakingBadCharacter>
     }
 
+    /**
+     * Consumption of API Asynchronously and populate local data base with the response
+     * */
     private fun consumeAPI(): String {
 
         var returnString = API_OK
@@ -123,10 +152,16 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    /**
+     * Reusable showError method
+     * */
     private fun showError(errorMessage: String) {
         Snackbar.make(View(this), errorMessage, Snackbar.LENGTH_LONG).show()
     }
 
+    /**
+     * Separate function to init Recycle View ensures it always reloads whenever the character collection/list is upddated
+     * */
     private fun initRecycleView() {
         characterListAdapter = CharacterAdapter(characterList)
         binding.rvCharacters.layoutManager = LinearLayoutManager(this)
@@ -149,6 +184,9 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
+    /**
+     * API Setup
+     * */
     private fun getRetrofit() :Retrofit {
         return Retrofit.Builder()
             .baseUrl(API_BASE_URL)

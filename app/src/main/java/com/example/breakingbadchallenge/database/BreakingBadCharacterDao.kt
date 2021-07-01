@@ -2,6 +2,10 @@ package com.example.breakingbadchallenge.database
 
 import androidx.room.*
 
+/**
+ * Character Data Access Object
+ * */
+
 @Dao
 interface BreakingBadCharacterDao {
     @Query("SELECT * FROM breakingbadcharacter")

@@ -7,7 +7,7 @@
     android:background="#00FFFFFF"
     android:foreground="@drawable/ic_baseline_favorite_border_24"
     android:foregroundTint="#00FFFFFF"
-    tools:context=".CharacterDetail">
+    tools:context=".ui.CharacterDetail">
 
     <TextView
         android:id="@+id/textPortrayed"

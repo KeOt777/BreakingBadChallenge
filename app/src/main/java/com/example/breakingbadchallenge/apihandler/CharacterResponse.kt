@@ -1,6 +1,10 @@
-package com.example.breakingbadchallenge
+package com.example.breakingbadchallenge.apihandler
 
 import com.google.gson.annotations.SerializedName
+
+/**
+ * Model for the Character API Response
+ * */
 
 data class CharacterResponse (
     @SerializedName("char_id") var char_id: Int,
