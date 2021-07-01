@@ -13,15 +13,13 @@ class CharacterViewHolder(view: View, listener: CharacterAdapter.onItemClickList
     private val cardBinding = CharacterCardBinding.bind(view)
     val characterNameText: TextView = cardBinding.textCharacterName
     val characterNickName: TextView = cardBinding.textNickName
-    val favorite: ImageView = cardBinding.imgFavorite
+    val favoriteImage: ImageView = cardBinding.imgFavorite
 
     init {
         itemView.setOnClickListener {
             listener.onItemClick(adapterPosition)
         }
     }
-
-
 
     fun bind(character: CharacterResponse){
         Picasso.get().load(character.img).into(cardBinding.imgCharacter)

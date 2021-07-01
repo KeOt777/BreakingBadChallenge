@@ -1,5 +1,11 @@
 package com.example.breakingbadchallenge
 
+const val NO_NETWORK = "Network Not Available"
+
+const val API_ERROR = "There was an error with retreiving information from the API"
+
+const val API_OK = "OK"
+
 const val API_BASE_URL = "https://www.breakingbadapi.com/api/"
 
 const val API_CALL_ALL = "characters?"

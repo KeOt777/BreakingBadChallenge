@@ -16,5 +16,5 @@ data class BreakingBadCharacter (
     val portrayed: String,
     val category: String,
     val better_call_saul_appearance: String,
-    var isFavorite: Boolean
+    var isFavorite: Boolean = false
 )

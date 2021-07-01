@@ -1,7 +1,7 @@
 package com.example.breakingbadchallenge.database
 
-//import com.example.breakingbadchallenge.appDataBase
-lateinit var appDataBase: AppDataBase
+import com.example.breakingbadchallenge.appDataBase
+
 class CharacterRepository : IRepository<BreakingBadCharacter>{
     override fun getAll(): List<BreakingBadCharacter> {
         return appDataBase.charactersDao().getAll()
