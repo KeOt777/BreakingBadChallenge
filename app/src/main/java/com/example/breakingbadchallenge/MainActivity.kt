@@ -67,6 +67,13 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
 
+        /**
+         * Should only be used when total clear of the Datatable is needed or wanted
+         * */
+        if(CLEAR_DATABASE) {
+            clearAllData()
+        }
+
         initData()
 
         initRecycleView()
@@ -75,9 +82,26 @@ class MainActivity : AppCompatActivity() {
          * In case of any error on the API consumption, show a Snackbar with the corresponding error message
          * */
         if(apiResult != API_OK) {
-            showError(apiResult)
+            showSnack(apiResult)
         }
 
+    }
+
+    /**
+     * To Ensure a Clean Database during testing
+     * */
+    private fun clearAllData() {
+        CoroutineScope(Dispatchers.IO).launch{
+            appDataBase.clearAllTables()
+
+            runOnUiThread(){
+//                setContentView(R.layout.activity_main)
+//                binding = ActivityMainBinding.inflate(layoutInflater)
+                characterListAdapter.notifyDataSetChanged()
+                initRecycleView()
+                //showSnack(CLEAR_DATABASE_MESSAGE)
+            }
+        }
     }
 
     /**
@@ -122,7 +146,7 @@ class MainActivity : AppCompatActivity() {
         val networkInfo = connectionManager.activeNetwork
         if (networkInfo != null) {
             CoroutineScope(Dispatchers.IO).launch{
-                val call = getRetrofit().create(APIService::class.java).getCharacters(API_CALL_INITIAL_TEN)
+                val call = getRetrofit().create(APIService::class.java).getCharacters(API_CALL_ALL)
                 val characters = call.body()
                 runOnUiThread(){
                     if(call.isSuccessful){
@@ -159,7 +183,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * Reusable showError method
      * */
-    private fun showError(errorMessage: String) {
+    private fun showSnack(errorMessage: String) {
         Snackbar.make(View(this), errorMessage, Snackbar.LENGTH_LONG).show()
     }
 

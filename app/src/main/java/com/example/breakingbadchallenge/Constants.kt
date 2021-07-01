@@ -52,7 +52,8 @@ const val EMPTY_STRING = ""
 
 const val DEFAULT_CHARACTER_ID = 0
 
-
 const val JOIN_TO_STRING_SEPARATOR = "|"
 
 const val SEPARATOR_REPLACEMENT = ", "
+
+const val CLEAR_DATABASE = false
