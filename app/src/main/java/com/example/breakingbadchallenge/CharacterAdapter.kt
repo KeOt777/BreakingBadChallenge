@@ -3,8 +3,9 @@ package com.example.breakingbadchallenge
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.breakingbadchallenge.database.BreakingBadCharacter
 
-class CharacterAdapter (val characterList:List<CharacterResponse>):RecyclerView.Adapter<CharacterViewHolder>() {
+class CharacterAdapter (val characterList:List<BreakingBadCharacter>):RecyclerView.Adapter<CharacterViewHolder>() {
 
     private lateinit var cListener : onItemClickListener
 

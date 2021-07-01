@@ -16,4 +16,7 @@ interface BreakingBadCharacterDao {
 
     @Update (entity = BreakingBadCharacter::class)
     fun update(value: BreakingBadCharacter)
+
+    @Query("SELECT * FROM breakingbadcharacter ORDER BY isFavorite DESC")
+    fun queryFavorites(): List<BreakingBadCharacter>
 }

@@ -34,6 +34,10 @@ const val CHARACTER_PORTRAYED = "portrayed"
 
 const val CHARACTER_IMAGE = "img"
 
+const val CHARACTER_FAVORITE = "isFavorite"
+
 const val EMPTY_STRING = ""
 
 const val DEFAULT_CHARACTER_ID = 0
+
+const val SNACKBAR_ERROR_TITLE = "ERROR"
