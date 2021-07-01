@@ -1,5 +1,11 @@
 package com.example.breakingbadchallenge
 
+const val NO_NETWORK = "Network Not Available"
+
+const val API_ERROR = "There was an error with retreiving information from the API"
+
+const val API_OK = "OK"
+
 const val API_BASE_URL = "https://www.breakingbadapi.com/api/"
 
 const val API_CALL_ALL = "characters?"
@@ -28,6 +34,10 @@ const val CHARACTER_PORTRAYED = "portrayed"
 
 const val CHARACTER_IMAGE = "img"
 
+const val CHARACTER_FAVORITE = "isFavorite"
+
 const val EMPTY_STRING = ""
 
 const val DEFAULT_CHARACTER_ID = 0
+
+const val SNACKBAR_ERROR_TITLE = "ERROR"

@@ -12,13 +12,18 @@ class CharacterRepository : IRepository<BreakingBadCharacter>{
     }
 
     override fun insertAll(character: BreakingBadCharacter) {
-        appDataBase.charactersDao().insertAll(character)
+        val characterExists = getCharacter(character.char_id)
+        if(characterExists == null){
+            appDataBase.charactersDao().insertAll(character)
+        }
     }
 
-    override fun updateFavorite(id: Int, favorite: Boolean) {
-        var character = getCharacter(id)
-        character.isFavorite = !character.isFavorite
+    override fun updateFavorite(character: BreakingBadCharacter) {
         appDataBase.charactersDao().update(character)
+    }
+
+    override fun queryFavorites(): List<BreakingBadCharacter> {
+        return appDataBase.charactersDao().queryFavorites()
     }
 
 }

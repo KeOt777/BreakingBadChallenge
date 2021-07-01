@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#00FFFFFF"
+    android:foreground="@drawable/ic_baseline_favorite_border_24"
+    android:foregroundTint="#00FFFFFF"
     tools:context=".CharacterDetail">
 
     <TextView
@@ -54,13 +57,13 @@
         android:layout_height="wrap_content"
         android:background="#1E1E1E"
         android:minHeight="?attr/actionBarSize"
+        android:textAlignment="center"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Walter White"
-        app:titleMarginStart="80dp" />
+        app:title="Walter White" />
 
     <ImageView
         android:id="@+id/imgCharacterDetail"
