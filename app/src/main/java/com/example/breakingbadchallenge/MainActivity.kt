@@ -8,13 +8,16 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.room.Room
+import com.example.breakingbadchallenge.database.AppDataBase
 import com.example.breakingbadchallenge.databinding.ActivityMainBinding
-import com.example.breakingbadchallenge.databinding.ContentMainBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+
+lateinit var appDataBase: AppDataBase
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,6 +31,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        appDataBase = Room.databaseBuilder(applicationContext, AppDataBase::class.java, "characters-database").allowMainThreadQueries().build()
+
+//        Log.d("BBC", appDataBase.charactersDao().toString())
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)

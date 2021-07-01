@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BreakingBadChallenge</string>
+    <string name="app_name">Challenge App</string>
     <string name="toolbar_title">Breaking Bad Characters</string>
     <string name="fab_content_description">Load</string>
     <string name="title_activity_main">MainActivity</string>
