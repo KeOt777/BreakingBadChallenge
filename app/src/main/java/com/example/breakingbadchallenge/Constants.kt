@@ -20,6 +20,8 @@ const val API_CALL_OFFSET = "characters?offset=@offset"
 
 const val API_CALL_LIMIT_OFFSET = "characters?limit=@limit&offset=@offset"
 
+const val CHARACTER_DATABASE = "characters-database"
+
 const val CHARACTER_ID = "char_id"
 
 const val CHARACTER_NAME = "name"
@@ -40,4 +42,7 @@ const val EMPTY_STRING = ""
 
 const val DEFAULT_CHARACTER_ID = 0
 
-const val SNACKBAR_ERROR_TITLE = "ERROR"
+
+const val JOIN_TO_STRING_SEPARATOR = "|"
+
+const val SEPARATOR_REPLACEMENT = ", "
