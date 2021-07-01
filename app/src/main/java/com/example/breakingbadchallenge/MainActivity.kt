@@ -10,6 +10,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.example.breakingbadchallenge.database.AppDataBase
+import com.example.breakingbadchallenge.database.CharacterRepository
 import com.example.breakingbadchallenge.databinding.ActivityMainBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -17,7 +18,7 @@ import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-lateinit var appDataBase: AppDataBase
+//lateinit var appDataBase: AppDataBase
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,10 +30,12 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var occupationArray: ArrayList<String>
 
+//    val dataRepo = CharacterRepository()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        appDataBase = Room.databaseBuilder(applicationContext, AppDataBase::class.java, "characters-database").allowMainThreadQueries().build()
+//        appDataBase = Room.databaseBuilder(applicationContext, AppDataBase::class.java, "characters-database").allowMainThreadQueries().build()
 
 //        Log.d("BBC", appDataBase.charactersDao().toString())
 
@@ -42,19 +45,35 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
 
+        //val checkLocalDB = checkLocalDataBase()
         val ApiResult = consumeAPI()
+
+//        if(!checkLocalDB){
+//
+//        }
+
+
 
         if(ApiResult){
             initRecycleView()
         }
 
     }
+//
+//    private fun checkLocalDataBase(): Boolean {
+//        var returnResult = true
+//        val localDBSize = dataRepo.getAll().size
+//        if(localDBSize <= 0){
+//            returnResult = false
+//        }
+//        return returnResult
+//    }
 
     private fun consumeAPI(): Boolean {
         var returnResult: Boolean = true
         CoroutineScope(Dispatchers.IO).launch{
             Log.d("BBC","Launching Rest API")
-            val call = getRetrofit().create(APIService::class.java).getCharacters(API_CALL_ALL)
+            val call = getRetrofit().create(APIService::class.java).getCharacters(API_CALL_FIRST)
             val characters = call.body()
             runOnUiThread(){
                 if(call.isSuccessful){
